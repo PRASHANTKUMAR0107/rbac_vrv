@@ -91,7 +91,6 @@ module.exports = (app) => {
     }
 
     try {
-      // Hash password if it is being updated
       // if (updates.password) {
       //   updates.password = await bcrypt.hash(updates.password, 10);
       // }
