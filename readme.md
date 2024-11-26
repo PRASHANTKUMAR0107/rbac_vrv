@@ -1,23 +1,31 @@
-# RBAC Server
+# RBAC (VRV)
 
 ## Description
 
-RBAC Server is a backend application that implements Role-Based Access Control (RBAC) for managing permissions and user roles. This project is designed to provide a secure and efficient way to manage different access levels for users, allowing for better control over resources.
+This is a full-stack Role-Based Access Control (RBAC) application that allows administrators to manage user roles and permissions in a web application. The project consists of both a **backend server** (Node.js, Express) and a **frontend UI** built with a modern frontend framework (e.g., React). This solution ensures secure management of users' access levels within a web application.
 
 ## Features
 
-- **Role-Based Access Control (RBAC)**: Manage different roles and their permissions.
-- **Environment Variables**: Configured using `dotenv` for secure management of sensitive data.
-- **Express Server**: Built with Express.js for creating RESTful APIs.
-- **Database Integration**: Supports MongoDB for storing user and role data.
+- **Role-Based Access Control (RBAC)**: Manage user roles and permissions effectively.
+- **Frontend Interface**: A web UI to manage users, roles, and permissions.
+- **Backend API**: Built with Express.js to handle authentication, authorization, and role management.
+- **Environment Variables**: Sensitive data management using `.env` files.
+- **Database Integration**: MongoDB used for storing users and roles.
 
 ## Technologies Used
 
-- **Node.js**: JavaScript runtime for building the backend.
-- **Express.js**: Web framework for Node.js.
-- **MongoDB**: NoSQL database to store user and role data.
-- **dotenv**: Used for loading environment variables from `.env` files.
-- **Bcrypt.js**: Used for hashing passwords securely.
+### Backend
+- **Node.js**: JavaScript runtime environment for the backend.
+- **Express.js**: Web framework to build the RESTful API.
+- **MongoDB**: NoSQL database for storing user and role data.
+- **Mongoose**: MongoDB ODM for object data modeling.
+- **dotenv**: Loads environment variables from a `.env` file.
+- **JWT**: JSON Web Tokens for secure user authentication and session management.
+
+### Frontend
+- **React.js**: JavaScript library for building the user interface.
+- **Axios**: For making HTTP requests to the backend API.
+- **TAILWINDCSS**: Styling the frontend interface.
 
 ## Installation
 
