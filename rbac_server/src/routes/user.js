@@ -1,5 +1,5 @@
 const mongoose = require("mongoose");
-const bcrypt = require("bcrypt");
+// const bcrypt = require("bcrypt");
 const User = require("../model/User");
 
 module.exports = (app) => {
@@ -35,10 +35,10 @@ module.exports = (app) => {
       }
 
       // Hash password
-      const hashedPassword = await bcrypt.hash(password, 10);
+      // const hashedPassword = await bcrypt.hash(password, 10);
 
       // Create new user
-      const newUser = new User({ name, email, password: hashedPassword, role, status });
+      const newUser = new User({ name, email, password, role, status });
       const savedUser = await newUser.save();
 
       res.status(201).json(savedUser); // Return the full user object
@@ -92,9 +92,9 @@ module.exports = (app) => {
 
     try {
       // Hash password if it is being updated
-      if (updates.password) {
-        updates.password = await bcrypt.hash(updates.password, 10);
-      }
+      // if (updates.password) {
+      //   updates.password = await bcrypt.hash(updates.password, 10);
+      // }
 
       const updatedUser = await User.findByIdAndUpdate(userId, updates, {
         new: true, // Return the updated user

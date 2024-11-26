@@ -5,7 +5,7 @@ function _regeneratorRuntime() { "use strict"; /*! regenerator-runtime -- Copyri
 function asyncGeneratorStep(n, t, e, r, o, a, c) { try { var i = n[a](c), u = i.value; } catch (n) { return void e(n); } i.done ? t(u) : Promise.resolve(u).then(r, o); }
 function _asyncToGenerator(n) { return function () { var t = this, e = arguments; return new Promise(function (r, o) { var a = n.apply(t, e); function _next(n) { asyncGeneratorStep(a, r, o, _next, _throw, "next", n); } function _throw(n) { asyncGeneratorStep(a, r, o, _next, _throw, "throw", n); } _next(void 0); }); }; }
 var mongoose = require("mongoose");
-var bcrypt = require("bcrypt");
+// const bcrypt = require("bcrypt");
 var User = require("../model/User");
 module.exports = function (app) {
   // Helper function for error responses
@@ -54,7 +54,7 @@ module.exports = function (app) {
   // Add User
   app.post("/api/users", /*#__PURE__*/function () {
     var _ref2 = _asyncToGenerator(/*#__PURE__*/_regeneratorRuntime().mark(function _callee2(req, res) {
-      var _req$body, name, email, password, role, status, existingUser, hashedPassword, newUser, savedUser;
+      var _req$body, name, email, password, role, status, existingUser, newUser, savedUser;
       return _regeneratorRuntime().wrap(function _callee2$(_context2) {
         while (1) switch (_context2.prev = _context2.next) {
           case 0:
@@ -82,34 +82,32 @@ module.exports = function (app) {
               error: "Email already exists"
             }));
           case 9:
-            _context2.next = 11;
-            return bcrypt.hash(password, 10);
-          case 11:
-            hashedPassword = _context2.sent;
+            // Hash password
+            // const hashedPassword = await bcrypt.hash(password, 10);
             // Create new user
             newUser = new User({
               name: name,
               email: email,
-              password: hashedPassword,
+              password: password,
               role: role,
               status: status
             });
-            _context2.next = 15;
+            _context2.next = 12;
             return newUser.save();
-          case 15:
+          case 12:
             savedUser = _context2.sent;
             res.status(201).json(savedUser); // Return the full user object
-            _context2.next = 22;
+            _context2.next = 19;
             break;
-          case 19:
-            _context2.prev = 19;
+          case 16:
+            _context2.prev = 16;
             _context2.t0 = _context2["catch"](3);
             handleError(res, "Failed to save user", _context2.t0);
-          case 22:
+          case 19:
           case "end":
             return _context2.stop();
         }
-      }, _callee2, null, [[3, 19]]);
+      }, _callee2, null, [[3, 16]]);
     }));
     return function (_x3, _x4) {
       return _ref2.apply(this, arguments);
@@ -203,43 +201,34 @@ module.exports = function (app) {
             }));
           case 9:
             _context4.prev = 9;
-            if (!updates.password) {
-              _context4.next = 14;
-              break;
-            }
-            _context4.next = 13;
-            return bcrypt.hash(updates.password, 10);
-          case 13:
-            updates.password = _context4.sent;
-          case 14:
-            _context4.next = 16;
+            _context4.next = 12;
             return User.findByIdAndUpdate(userId, updates, {
               "new": true,
               // Return the updated user
               runValidators: true // Ensure validation on update
             });
-          case 16:
+          case 12:
             updatedUser = _context4.sent;
             if (updatedUser) {
-              _context4.next = 19;
+              _context4.next = 15;
               break;
             }
             return _context4.abrupt("return", res.status(404).json({
               message: "User not found"
             }));
-          case 19:
+          case 15:
             res.status(200).json(updatedUser);
-            _context4.next = 25;
+            _context4.next = 21;
             break;
-          case 22:
-            _context4.prev = 22;
+          case 18:
+            _context4.prev = 18;
             _context4.t0 = _context4["catch"](9);
             handleError(res, "Failed to update user", _context4.t0);
-          case 25:
+          case 21:
           case "end":
             return _context4.stop();
         }
-      }, _callee4, null, [[9, 22]]);
+      }, _callee4, null, [[9, 18]]);
     }));
     return function (_x7, _x8) {
       return _ref4.apply(this, arguments);
