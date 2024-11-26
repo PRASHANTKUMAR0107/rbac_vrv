@@ -1,7 +1,7 @@
 "use strict";
 
+require('regenerator-runtime/runtime');
 require("dotenv").config();
-require("regenerator-runtime/runtime");
 var express = require("express");
 var cors = require("cors");
 var role = require("./routes/role");
