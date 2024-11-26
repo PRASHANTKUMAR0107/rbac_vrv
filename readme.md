@@ -31,7 +31,7 @@ RBAC Server is a backend application that implements Role-Based Access Control (
 1. Clone the repository:
 
     ```bash
-    git clone https://github.com/your-username/rbac-server.git
+    git clone https://github.com/PRASHANTKUMAR0107/rbac_vrv.git
     ```
 
 2. Install dependencies:
